@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace NPCSystem
+namespace NPCSystem.NPC
 {
     public abstract class QuestNPC : MonoBehaviour
     {

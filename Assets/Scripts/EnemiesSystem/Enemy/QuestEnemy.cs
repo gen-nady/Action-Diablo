@@ -1,10 +1,12 @@
 ﻿using QuestSystem;
+using QuestSystem.Giver;
+using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 
-namespace EnemiesSystem
+namespace EnemiesSystem.Enemy
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class QuestEnemy : MonoBehaviour
     {
         [SerializeField] protected string _idName;
         protected PlayerQuest _playerQuest;
@@ -26,7 +28,7 @@ namespace EnemiesSystem
             QuestGiver.AddQuestToPlayer -= KillEnemy;
         }
 
-        private void KillEnemy(Quest.Quest quest)
+        private void KillEnemy(Quest quest)
         {
             if(quest.Id == _idName)
                 gameObject.SetActive(true);

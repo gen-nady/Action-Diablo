@@ -4,7 +4,7 @@ using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 
-namespace ItemsSystem
+namespace ItemsSystem.Items
 {
     public abstract class QuestItem : MonoBehaviour
     {
