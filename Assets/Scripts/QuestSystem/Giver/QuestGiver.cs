@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using MainPlayer;
+using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 
-namespace Quest
+namespace QuestSystem.Giver
 {
     public class QuestGiver : MonoBehaviour
     {

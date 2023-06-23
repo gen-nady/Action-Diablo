@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using QuestSystem.Giver;
+using QuestSystem.Talk;
 using UnityEngine;
 using Zenject;
 
-namespace Quest
+namespace QuestSystem.Player
 {
     public class PlayerQuest : MonoBehaviour
     {

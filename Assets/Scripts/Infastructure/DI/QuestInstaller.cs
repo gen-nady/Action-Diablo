@@ -1,4 +1,4 @@
-﻿using Quest;
+﻿using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 

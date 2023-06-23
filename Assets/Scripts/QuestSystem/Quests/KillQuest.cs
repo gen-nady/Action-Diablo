@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Quest
+namespace QuestSystem
 {
     [CreateAssetMenu(fileName = "New Kill Quest", menuName = "Quest System/Kill Quest")]
     public class KillQuest : Quest

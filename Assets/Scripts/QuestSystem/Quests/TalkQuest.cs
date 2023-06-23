@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using QuestSystem.Giver;
 using UnityEngine;
 
-namespace Quest
+namespace QuestSystem
 {
     [CreateAssetMenu(fileName = "New Talk Quest", menuName = "Quest System/Talk Quest")]
     public class TalkQuest : Quest

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Quest
+namespace QuestSystem
 {
     public abstract class Quest : ScriptableObject
     {

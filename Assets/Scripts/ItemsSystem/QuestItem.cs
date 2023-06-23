@@ -1,11 +1,12 @@
-﻿using System;
-using Quest;
+﻿using QuestSystem;
+using QuestSystem.Giver;
+using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectToQuest
+namespace ItemsSystem
 {
-    public abstract class PickUpItem : MonoBehaviour
+    public abstract class QuestItem : MonoBehaviour
     {
         [SerializeField] protected string _idName;
         protected PlayerQuest _playerQuest;
@@ -28,7 +29,7 @@ namespace ObjectToQuest
             QuestGiver.AddQuestToPlayer -= EnableItem;
         }
         
-        protected void EnableItem(Quest.Quest quest)
+        protected void EnableItem(Quest quest)
         {
             if(quest.Id == _idName)
                 gameObject.SetActive(true);

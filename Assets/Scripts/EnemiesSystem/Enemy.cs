@@ -1,8 +1,8 @@
-﻿using Quest;
+﻿using QuestSystem;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectToQuest.KillNPC
+namespace EnemiesSystem
 {
     public abstract class Enemy : MonoBehaviour
     {

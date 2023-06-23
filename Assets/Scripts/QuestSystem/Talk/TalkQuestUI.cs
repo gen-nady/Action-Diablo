@@ -1,9 +1,8 @@
-﻿using Infastructure;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Quest
+namespace QuestSystem.Talk
 {
     public class TalkQuestUI : MonoBehaviour
     {

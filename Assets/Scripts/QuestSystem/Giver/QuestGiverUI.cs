@@ -1,11 +1,9 @@
 ﻿using System;
-using Infastructure;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Quest
+namespace QuestSystem.Giver
 {
     public class QuestGiverUI : MonoBehaviour
     {

@@ -1,10 +1,10 @@
-﻿using Quest;
+﻿using QuestSystem.Player;
 using UnityEngine;
 using Zenject;
 
-namespace ObjectToQuest
+namespace NPCSystem
 {
-    public abstract class TalkNPC : MonoBehaviour
+    public abstract class QuestNPC : MonoBehaviour
     {
         [SerializeField] protected string _idName;
         protected PlayerQuest _playerQuest;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Quest
+namespace QuestSystem
 {
     [CreateAssetMenu(fileName = "New Search Quest", menuName = "Quest System/Search Quest")]
     public class SearchQuest : Quest

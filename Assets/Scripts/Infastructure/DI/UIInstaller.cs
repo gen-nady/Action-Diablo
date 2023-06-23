@@ -1,4 +1,6 @@
-﻿using Quest;
+﻿using QuestSystem.Giver;
+using QuestSystem.Player;
+using QuestSystem.Talk;
 using UnityEngine;
 using Zenject;
 

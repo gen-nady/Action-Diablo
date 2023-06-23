@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TMPro;
+using QuestSystem.Giver;
 using UnityEngine;
 
-namespace Quest
+namespace QuestSystem.Player
 {
     public class PlayerQuestUI : MonoBehaviour
     {

@@ -1,8 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Quest
+namespace QuestSystem.Player
 {
     public class PlayerQuestPrefab : MonoBehaviour
     {
