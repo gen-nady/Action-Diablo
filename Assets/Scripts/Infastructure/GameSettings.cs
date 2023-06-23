@@ -4,9 +4,11 @@ namespace Infastructure
 {
     public class GameSettings : MonoBehaviour
     {
+        [SerializeField] private int _targetFrameRate;
+        
         private void Awake()
         {
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = _targetFrameRate;
         }
     }
 }

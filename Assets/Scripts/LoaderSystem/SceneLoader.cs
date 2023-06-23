@@ -23,7 +23,8 @@ namespace LoaderSystem
             _worldInfoUI = worldInfoUI;
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        #region MONO
+        private void OnTriggerEnter(Collider col)
         {
             if (col.GetComponent<PlayerMovement>())
             {
@@ -32,14 +33,15 @@ namespace LoaderSystem
             }
         }
 
-        private void OnTriggerExit2D(Collider2D col)
+        private void OnTriggerExit(Collider col)
         {
             if (col.GetComponent<PlayerMovement>())
             {
                 _worldInfoUI.CloseButtonActionPanel();
             }
         }
-
+        #endregion
+        
         private void OpenNewScene()
         {
             _currentTransform.position = _positionPoint;
@@ -55,7 +57,6 @@ namespace LoaderSystem
             {
                 yield return null;
             }
-
             progress.allowSceneActivation = true;
             OnSceneChange?.Invoke();
             _worldInfoUI.CloseButtonActionPanel();

@@ -17,6 +17,7 @@ namespace ItemsSystem.Items
             _playerQuest = playerQuest;
         }
 
+        #region MONO
         protected virtual void OnEnable()
         {
             QuestGiver.AddQuestToPlayer += EnableItem;
@@ -24,10 +25,11 @@ namespace ItemsSystem.Items
             gameObject.SetActive(_playerQuest.IsShowQuestObject(_idName));
         }
         
-        protected virtual void OnDestroy()
+        protected virtual void OnDisable()
         {
             QuestGiver.AddQuestToPlayer -= EnableItem;
         }
+        #endregion
         
         protected void EnableItem(Quest quest)
         {

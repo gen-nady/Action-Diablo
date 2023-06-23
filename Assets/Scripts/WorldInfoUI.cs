@@ -14,6 +14,7 @@ public class WorldInfoUI : MonoBehaviour
     [SerializeField] private Button _buttonAction;
     [SerializeField] private TextMeshProUGUI _buttonText;
 
+    #region MONO
     private void OnEnable()
     {
         LoaderSystem.SceneLoader.OnSceneChange += CloseTableInfoPanel;
@@ -23,6 +24,7 @@ public class WorldInfoUI : MonoBehaviour
     {
         LoaderSystem.SceneLoader.OnSceneChange -= CloseTableInfoPanel;
     }
+    #endregion
     
     public void ShowTableInfoPanel(string text)
     {

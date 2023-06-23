@@ -16,19 +16,23 @@ namespace EnemiesSystem.Enemy
         {
             _playerQuest = playerQuest;
         }
-        
-        private void Awake()
+
+        #region MONO
+        private void OnEnable()
         {
-            QuestGiver.AddQuestToPlayer += KillEnemy;
+            QuestGiver.AddQuestToPlayer += ActiveEnemy;
             gameObject.SetActive(_playerQuest.IsShowQuestObject(_idName));
         }
    
-        private void OnDestroy()
-        {
-            QuestGiver.AddQuestToPlayer -= KillEnemy;
+        private void OnDisable()
+        {  
+            if(_idName != string.Empty)
+                _playerQuest.EnemyKilled(_idName);
+            QuestGiver.AddQuestToPlayer -= ActiveEnemy;
         }
+        #endregion
 
-        private void KillEnemy(Quest quest)
+        private void ActiveEnemy(Quest quest)
         {
             if(quest.Id == _idName)
                 gameObject.SetActive(true);
