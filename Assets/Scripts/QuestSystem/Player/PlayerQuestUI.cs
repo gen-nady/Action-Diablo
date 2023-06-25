@@ -7,6 +7,7 @@ namespace QuestSystem.Player
 {
     public class PlayerQuestUI : MonoBehaviour
     {
+        [SerializeField] private GameObject _panelQuest;
         [SerializeField] private PlayerQuestPrefab _playerQuestPrefab;
         [SerializeField] private RectTransform _intantiatePosition;
         private List<PlayerQuestPrefab> _playerQuest = new List<PlayerQuestPrefab>();
@@ -21,6 +22,11 @@ namespace QuestSystem.Player
         {
             QuestGiver.AddQuestToPlayer -= SetInfoOrQuest;
             QuestGiver.QuestCompleted -= ResetQuest;
+        }
+
+        public void QuestPanelActiveState()
+        {
+            _panelQuest.SetActive(!_panelQuest.activeSelf);
         }
         
         public void ChangeProgress(Quest quest)

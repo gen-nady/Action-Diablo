@@ -5,37 +5,11 @@ using UnityEngine.UI;
 
 public class WorldInfoUI : MonoBehaviour
 {
-    [Header("Table Info")]
-    [SerializeField] private GameObject _tableInfoPanel;
-    [SerializeField] private TextMeshProUGUI _tableInfoText;
     [Header("Loading Panel")]
     [SerializeField] private GameObject _loadingPanel;
     [Header("Other Item")]
     [SerializeField] private Button _buttonAction;
     [SerializeField] private TextMeshProUGUI _buttonText;
-
-    #region MONO
-    private void OnEnable()
-    {
-        LoaderSystem.SceneLoader.OnSceneChange += CloseTableInfoPanel;
-    }
-
-    private void OnDisable()
-    {
-        LoaderSystem.SceneLoader.OnSceneChange -= CloseTableInfoPanel;
-    }
-    #endregion
-    
-    public void ShowTableInfoPanel(string text)
-    {
-        _tableInfoPanel.SetActive(true);
-        _tableInfoText.text = text;
-    }
-    
-    public void CloseTableInfoPanel()
-    {
-        _tableInfoPanel.SetActive(false);
-    }
     
     public void OpenLoading()
     {

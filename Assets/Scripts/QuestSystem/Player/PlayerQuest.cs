@@ -95,26 +95,26 @@ namespace QuestSystem.Player
             _playerQuestUI.ChangeProgress(quest);
         }
 
-        // public void SaveProgressQuest()
-        // {
-        //     ES3.Save("PlayerQuest", _quests);
-        //     ES3.Save("ComplitedPlayerQuest", _complitedQuests);
-        // }
-        //
-        // public void LoadProgressQuest()
-        // {
-        //     if (ES3.KeyExists("PlayerQuest"))
-        //     {
-        //         _quests = ES3.Load<List<Quest>>("PlayerQuest");
-        //         foreach (var quest in _quests)
-        //         {
-        //             _playerQuestUI.SetInfoOrQuest(quest);
-        //         }
-        //     }
-        //     if (ES3.KeyExists("ComplitedPlayerQuest"))
-        //     {
-        //         _complitedQuests = ES3.Load<List<string>>("ComplitedPlayerQuest");
-        //     }
-        // }
+        public void SaveProgressQuest()
+        {
+            ES3.Save("PlayerQuest", _quests);
+            ES3.Save("ComplitedPlayerQuest", _complitedQuests);
+        }
+        
+        public void LoadProgressQuest()
+        {
+            if (ES3.KeyExists("PlayerQuest"))
+            {
+                _quests = ES3.Load<List<Quest>>("PlayerQuest");
+                foreach (var quest in _quests)
+                {
+                    _playerQuestUI.SetInfoOrQuest(quest);
+                }
+            }
+            if (ES3.KeyExists("ComplitedPlayerQuest"))
+            {
+                _complitedQuests = ES3.Load<List<string>>("ComplitedPlayerQuest");
+            }
+        }
     }
 }

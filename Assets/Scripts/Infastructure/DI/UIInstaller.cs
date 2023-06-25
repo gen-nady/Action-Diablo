@@ -11,12 +11,14 @@ namespace Infastructure
         [SerializeField] private PlayerQuestUI _playerQuestUI;
         [SerializeField] private QuestGiverUI _questGiverUI;
         [SerializeField] private TalkQuestUI _talkQuestUI;
+        [SerializeField] private WorldInfoUI _worldInfoUI;
         
         public override void InstallBindings()
         {
             Container.Bind<PlayerQuestUI>().FromInstance(_playerQuestUI).AsSingle();
             Container.Bind<QuestGiverUI>().FromInstance(_questGiverUI).AsSingle();  
-            Container.Bind<TalkQuestUI>().FromInstance(_talkQuestUI).AsSingle();
+            Container.Bind<TalkQuestUI>().FromInstance(_talkQuestUI).AsSingle(); 
+            Container.Bind<WorldInfoUI>().FromInstance(_worldInfoUI).AsSingle();
         }
     }
 }
