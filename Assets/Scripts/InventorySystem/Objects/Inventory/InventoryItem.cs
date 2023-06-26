@@ -7,7 +7,7 @@ namespace InventorySystem
     {
         public InventoryItemInfo info { get; }
         public InventoryItemState state { get; }
-        public Type type => GetType();
+        //public Type type => GetType();
 
         public InventoryItem(InventoryItemInfo info)
         {

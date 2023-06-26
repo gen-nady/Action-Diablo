@@ -24,7 +24,7 @@ namespace InventorySystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PickUp>(out var pickUp))
+            if (other.TryGetComponent<PickUpItem>(out var pickUp))
             {
                 inventory.TryToAdd(this, pickUp.item);
                 Destroy(pickUp.gameObject);

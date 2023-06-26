@@ -9,7 +9,7 @@ namespace InventorySystem.UI
         private CanvasGroup _canvasGroup;
         private Canvas _invetoryCanvas;
         private RectTransform _rectTransform;
-
+        private const int SCALE_FACTOR = 2;
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
@@ -26,7 +26,7 @@ namespace InventorySystem.UI
         
         public void OnDrag(PointerEventData eventData)
         {
-            _rectTransform.anchoredPosition += eventData.delta; //* _invetoryCanvas.scaleFactor;
+            _rectTransform.localPosition += (Vector3)(eventData.delta) / _invetoryCanvas.scaleFactor / SCALE_FACTOR;
         }
 
         public void OnEndDrag(PointerEventData eventData)

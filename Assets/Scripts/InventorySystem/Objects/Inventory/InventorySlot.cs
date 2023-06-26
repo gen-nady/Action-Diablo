@@ -7,7 +7,7 @@ namespace InventorySystem
         public bool isFull => !isEmpty && amount == capacity;
         public bool isEmpty => item == null; 
         public InventoryItem item { get; private set; }
-        public Type itemType => item.type;
+        //public Type itemType => item.type;
         public int amount => isEmpty ? 0 : item.state.amount;
         public int capacity { get; private set; }
         public void SetItem(InventoryItem item)

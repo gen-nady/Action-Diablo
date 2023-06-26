@@ -26,6 +26,11 @@ namespace InventorySystem.UI
             SetupInventoryUI();
         }
 
+        public void CloseInventory()
+        {
+            _panelInventory.SetActive(false);
+        }
+        
         private void SetupInventoryUI()
         {
             var allSlots = inventory.GetAllSlots();
@@ -40,9 +45,12 @@ namespace InventorySystem.UI
 
         private void OnInventoryStateChanged(object sender)
         {
-            foreach (var slot in _uiSlots)
-            {
-                slot.Refresh();
+            if (_panelInventory.activeInHierarchy)
+            { 
+                foreach (var slot in _uiSlots)
+                {
+                    slot.Refresh();
+                } 
             }
         }
 

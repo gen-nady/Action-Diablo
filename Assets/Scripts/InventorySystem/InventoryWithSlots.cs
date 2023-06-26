@@ -7,7 +7,7 @@ namespace InventorySystem
     public class InventoryWithSlots
     {
         public event Action<object, InventoryItem, int> OnInventoryItemAddedEvent;
-        public event Action<object, Type, int> OnInventoryItemRemovedEvent;
+        public event Action<object, string, int> OnInventoryItemRemovedEvent;
         public event Action<object> OnInventoryStateChangedEvent;
         public int capacity { get; set; }
         public bool isFull => _slots.All(_ => _.isFull);
@@ -24,9 +24,9 @@ namespace InventorySystem
             }
         }
         
-        public InventoryItem GetItem(Type itemType)
+        public InventoryItem GetItem(string id)
         {
-            return _slots.Find(_ => _.itemType == itemType).item;
+            return _slots.Find(_ => _.item.info.id == id).item;
         }
 
         public List<InventoryItem> GetAllItems()
@@ -36,9 +36,9 @@ namespace InventorySystem
                          .ToList();
         }
 
-        public List<InventoryItem> GetAllItems(Type itemType)
+        public List<InventoryItem> GetAllItems(string id)
         {
-            return _slots.Where(_ => !_.isEmpty && _.itemType == itemType)
+            return _slots.Where(_ => !_.isEmpty && _.item.info.id == id)
                          .Select(_ => _.item)
                          .ToList();
         }
@@ -50,16 +50,16 @@ namespace InventorySystem
                 .ToList();
         }
 
-        public int GetItemAmount(Type itemType)
+        public int GetItemAmount(string id)
         {
-            return _slots.Where(_ => !_.isEmpty && _.itemType == itemType)
+            return _slots.Where(_ => !_.isEmpty && _.item.info.id == id)
                 .Select(_ => _.item)
                 .Sum(_ => _.state.amount);
         }
 
         public bool TryToAdd(object sender, InventoryItem item)
         {
-            var slotWithSameItemButNotEmpty = _slots.Find(_ => !_.isEmpty && _.itemType == item.type && !_.isFull);
+            var slotWithSameItemButNotEmpty = _slots.Find(_ => !_.isEmpty && _.item.info.id == item.info.id && !_.isFull);
             if (slotWithSameItemButNotEmpty != null)
                 return TryAddToSlot(sender, slotWithSameItemButNotEmpty, item);
             
@@ -100,7 +100,7 @@ namespace InventorySystem
             
             if(toSlot.isFull) return;
             
-            if(!toSlot.isEmpty && fromSlot. itemType != toSlot.itemType) return;
+            if(!toSlot.isEmpty && fromSlot.item.info.id != toSlot.item.info.id) return;
 
             var slotcapacity = fromSlot.capacity;
             var fits = fromSlot.amount + toSlot.amount <= slotcapacity;
@@ -122,9 +122,9 @@ namespace InventorySystem
             OnInventoryStateChangedEvent?.Invoke(sender);
         }
         
-        public void Remove(object sender, Type itemType, int amount = 1)
+        public void Remove(object sender, string id, int amount = 1)
         {
-            var slotsWithItem = GetAllSlots(itemType);
+            var slotsWithItem = GetAllSlots(id);
             if(slotsWithItem.Count == 0) return;
 
             var amountToRemove = amount;
@@ -139,7 +139,7 @@ namespace InventorySystem
                     if (slot.amount <= 0)
                         slot.Clear();
                     OnInventoryStateChangedEvent?.Invoke(sender);
-                    OnInventoryItemRemovedEvent?.Invoke(sender, itemType, amountToRemove);
+                    OnInventoryItemRemovedEvent?.Invoke(sender, id, amountToRemove);
                     break;
                 }
 
@@ -147,13 +147,23 @@ namespace InventorySystem
                 amountToRemove -= slot.amount;
                 slot.Clear();
                 OnInventoryStateChangedEvent?.Invoke(sender);
-                OnInventoryItemRemovedEvent?.Invoke(sender, itemType, amountRemoved);
+                OnInventoryItemRemovedEvent?.Invoke(sender, id, amountRemoved);
             }
         }
 
-        public List<InventorySlot> GetAllSlots(Type itemType)
+        public void Remove(object sender, InventorySlot slotDeleted)
         {
-            return _slots.FindAll(_ => !_.isEmpty && _.itemType == itemType);
+            var slotsWithDeleted =_slots.FirstOrDefault(_ => _ == slotDeleted);
+            if(slotsWithDeleted == default) return;
+            slotsWithDeleted.Clear();
+            OnInventoryStateChangedEvent?.Invoke(sender);
+            OnInventoryItemRemovedEvent?.Invoke(sender, slotsWithDeleted.item.info.id, slotsWithDeleted.item.state.amount);
+        }
+        
+        
+        public List<InventorySlot> GetAllSlots(string id)
+        {
+            return _slots.FindAll(_ => !_.isEmpty && _.item.info.id == id);
         }
         
         public List<InventorySlot> GetAllSlots()
@@ -161,9 +171,9 @@ namespace InventorySystem
             return _slots;
         }
 
-        public bool HasItem(Type type, out InventoryItem item)
+        public bool HasItem(string id, out InventoryItem item)
         {
-            item = GetItem(type);
+            item = GetItem(id);
             return item != null;
         }
     }
