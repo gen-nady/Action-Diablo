@@ -1,6 +1,4 @@
-﻿using System;
-using InventorySystem.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace InventorySystem.UI
@@ -8,7 +6,7 @@ namespace InventorySystem.UI
     public class UIInventorySlot : UISlot
     {
         [SerializeField] private UIInventoryItem _uiInventoryItem;
-        public IInventorySlot slot { get; private set; }
+        public InventorySlot slot { get; private set; }
         private UIInventory _uiInventory;
 
         private void OnEnable()
@@ -16,7 +14,7 @@ namespace InventorySystem.UI
             _uiInventory = GetComponentInParent<UIInventory>();
         }
 
-        public void SetSlot(IInventorySlot newSlot)
+        public void SetSlot(InventorySlot newSlot)
         {
             slot = newSlot;
         }

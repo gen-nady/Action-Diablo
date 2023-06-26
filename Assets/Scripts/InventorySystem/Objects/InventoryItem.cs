@@ -1,22 +1,21 @@
 ﻿using System;
-using InventorySystem.Interfaces;
 using InventorySystem.Objects;
 
 namespace InventorySystem
 {
-    public class InventoryItem : IInventoryItem
+    public class InventoryItem 
     {
-        public IInventoryItemInfo info { get; }
-        public IInventoryItemState state { get; }
+        public InventoryItemInfo info { get; }
+        public InventoryItemState state { get; }
         public Type type => GetType();
 
-        public InventoryItem(IInventoryItemInfo info)
+        public InventoryItem(InventoryItemInfo info)
         {
             this.info = info;
             state = new InventoryItemState();
         }
 
-        public IInventoryItem Clone()
+        public InventoryItem Clone()
         {
             var clonned = new InventoryItem(info);
             clonned.state.amount = state.amount;

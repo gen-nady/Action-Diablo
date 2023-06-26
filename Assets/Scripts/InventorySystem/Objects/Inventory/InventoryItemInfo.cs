@@ -1,10 +1,9 @@
-﻿using InventorySystem.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace InventorySystem.Objects
 {
     [CreateAssetMenu(fileName = "InventoryItemInfo", menuName = "Inventory", order = 0)]
-    public class InventoryItemInfo : ScriptableObject, IInventoryItemInfo
+    public class InventoryItemInfo : ScriptableObject
     {
         [SerializeField] private string _id;
         [SerializeField] private string _title;

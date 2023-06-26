@@ -1,9 +1,4 @@
-﻿using System;
-using InventorySystem.Interfaces;
-using InventorySystem.Objects;
-using UnityEngine;
-
-namespace InventorySystem
+﻿namespace InventorySystem
 {
     public class TestSword : PickUp
     {

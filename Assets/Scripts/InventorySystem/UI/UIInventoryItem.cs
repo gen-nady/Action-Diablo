@@ -1,5 +1,4 @@
-﻿using InventorySystem.Interfaces;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +10,9 @@ namespace InventorySystem.UI
         [SerializeField] private Image _imageIcon;
         [SerializeField] private TextMeshProUGUI _textAmount;
         
-        public IInventoryItem item { get; private set; }
+        public InventoryItem item { get; private set; }
         
-        public void Refresh(IInventorySlot slot)
+        public void Refresh(InventorySlot slot)
         {
             if (slot.isEmpty)
             {

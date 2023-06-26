@@ -1,8 +1,6 @@
-﻿using InventorySystem.Interfaces;
-
-namespace InventorySystem.Objects
+﻿namespace InventorySystem.Objects
 {
-    public class InventoryItemState : IInventoryItemState
+    public class InventoryItemState
     {
         public int ItemAmount;
         public bool IsItemEquipped;

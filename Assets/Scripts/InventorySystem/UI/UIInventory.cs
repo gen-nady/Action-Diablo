@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using InventorySystem.Interfaces;
-using InventorySystem.Objects;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

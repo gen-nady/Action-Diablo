@@ -1,50 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using InventorySystem.Interfaces;
 
 namespace InventorySystem
 {
-    public class InventoryWithSlots : IInventory
+    public class InventoryWithSlots
     {
-        public event Action<object, IInventoryItem, int> OnInventoryItemAddedEvent;
+        public event Action<object, InventoryItem, int> OnInventoryItemAddedEvent;
         public event Action<object, Type, int> OnInventoryItemRemovedEvent;
         public event Action<object> OnInventoryStateChangedEvent;
         public int capacity { get; set; }
         public bool isFull => _slots.All(_ => _.isFull);
 
-        private List<IInventorySlot> _slots;
+        private List<InventorySlot> _slots;
 
         public InventoryWithSlots(int capacity)
         {
             this.capacity = capacity;
-            _slots = new List<IInventorySlot>(capacity);
+            _slots = new List<InventorySlot>(capacity);
             for (int i = 0; i < capacity; i++)
             {
                 _slots.Add(new InventorySlot());
             }
         }
         
-        public IInventoryItem GetItem(Type itemType)
+        public InventoryItem GetItem(Type itemType)
         {
             return _slots.Find(_ => _.itemType == itemType).item;
         }
 
-        public List<IInventoryItem> GetAllItems()
+        public List<InventoryItem> GetAllItems()
         {
             return _slots.Where(_ => !_.isEmpty)
                          .Select(_ => _.item)
                          .ToList();
         }
 
-        public List<IInventoryItem> GetAllItems(Type itemType)
+        public List<InventoryItem> GetAllItems(Type itemType)
         {
             return _slots.Where(_ => !_.isEmpty && _.itemType == itemType)
                          .Select(_ => _.item)
                          .ToList();
         }
 
-        public List<IInventoryItem> GetEquippedItems()
+        public List<InventoryItem> GetEquippedItems()
         {
             return _slots.Where(_ => !_.isEmpty && _.item.state.isEquipped)
                 .Select(_ => _.item)
@@ -58,7 +57,7 @@ namespace InventorySystem
                 .Sum(_ => _.state.amount);
         }
 
-        public bool TryToAdd(object sender, IInventoryItem item)
+        public bool TryToAdd(object sender, InventoryItem item)
         {
             var slotWithSameItemButNotEmpty = _slots.Find(_ => !_.isEmpty && _.itemType == item.type && !_.isFull);
             if (slotWithSameItemButNotEmpty != null)
@@ -71,7 +70,7 @@ namespace InventorySystem
             return false;
         }
 
-        private bool TryAddToSlot(object sender, IInventorySlot slot, IInventoryItem item)
+        private bool TryAddToSlot(object sender, InventorySlot slot, InventoryItem item)
         {
             var fits = slot.amount + item.state.amount <= item.info.maxItemInInventorySlot;
             var amountToAdd = fits ? item.state.amount : item.info.maxItemInInventorySlot - slot.amount;
@@ -93,7 +92,7 @@ namespace InventorySystem
             return TryToAdd(sender, item);
         }
 
-        public void TransitFromSlotToSlot(object sender, IInventorySlot fromSlot, IInventorySlot toSlot)
+        public void TransitFromSlotToSlot(object sender, InventorySlot fromSlot, InventorySlot toSlot)
         {
             if(fromSlot == toSlot) return;
             
@@ -152,17 +151,17 @@ namespace InventorySystem
             }
         }
 
-        public List<IInventorySlot> GetAllSlots(Type itemType)
+        public List<InventorySlot> GetAllSlots(Type itemType)
         {
             return _slots.FindAll(_ => !_.isEmpty && _.itemType == itemType);
         }
         
-        public List<IInventorySlot> GetAllSlots()
+        public List<InventorySlot> GetAllSlots()
         {
             return _slots;
         }
 
-        public bool HasItem(Type type, out IInventoryItem item)
+        public bool HasItem(Type type, out InventoryItem item)
         {
             item = GetItem(type);
             return item != null;

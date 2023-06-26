@@ -1,13 +1,10 @@
-﻿using System;
-using InventorySystem.Interfaces;
-using InventorySystem.Objects;
-using UnityEngine;
+﻿using InventorySystem.Objects;
 
 namespace InventorySystem
 {
     public class Sword : InventoryItem
     {
-        public Sword(IInventoryItemInfo info) : base(info)
+        public Sword(InventoryItemInfo info) : base(info)
         {
         }
     }
