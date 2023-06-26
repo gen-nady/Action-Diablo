@@ -10,11 +10,14 @@ namespace InventorySystem
         [SerializeField] private int _inventoryCapacity = 14;
         private InventoryWithSlots inventory;
         private UIInventory _uiInventory;
-
+        private WorldInfoUI _worldInfoUI;
+        private const string PICKUP = "Pick Up";
+        
         [Inject]
-        private void Construct(UIInventory uiInventory)
+        private void Construct(UIInventory uiInventory, WorldInfoUI worldInfoUI)
         {
             _uiInventory = uiInventory;
+            _worldInfoUI = worldInfoUI;
         }
         private void Awake()
         {
@@ -26,9 +29,22 @@ namespace InventorySystem
         {
             if (other.TryGetComponent<PickUpItem>(out var pickUp))
             {
-                inventory.TryToAdd(this, pickUp.item);
-                Destroy(pickUp.gameObject);
+                _worldInfoUI.OpenButtonActionPanel(() => PickUpItem(pickUp), PICKUP);
             }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent<PickUpItem>(out var pickUp))
+            {
+                _worldInfoUI.CloseButtonActionPanel();
+            }
+        }
+
+        private void PickUpItem(PickUpItem pickUp)
+        {
+            inventory.TryToAdd(this, pickUp.item);
+            Destroy(pickUp.gameObject);
         }
     }
 }

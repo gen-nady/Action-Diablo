@@ -1,4 +1,6 @@
-﻿using InventorySystem.Objects;
+﻿using System;
+using InventorySystem.Objects;
+using MainPlayer;
 using UnityEngine;
 
 namespace InventorySystem
@@ -7,6 +9,5 @@ namespace InventorySystem
     {
         [SerializeField] protected InventoryItemInfo info;
         public InventoryItem item { get; protected set; }
-        
     }
 }

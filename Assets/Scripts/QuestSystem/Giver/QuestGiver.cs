@@ -137,6 +137,7 @@ namespace QuestSystem.Giver
             {
                 _questGiverUI.CloseQuestPanel();
                 _questGiverUI.CloseBonusesPanel();
+                _worldInfoUI.CloseButtonActionPanel();
             }
         }
     }
