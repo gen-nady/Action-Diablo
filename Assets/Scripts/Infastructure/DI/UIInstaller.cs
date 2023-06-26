@@ -1,4 +1,5 @@
-﻿using QuestSystem.Giver;
+﻿using InventorySystem.UI;
+using QuestSystem.Giver;
 using QuestSystem.Player;
 using QuestSystem.Talk;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Infastructure
         [SerializeField] private QuestGiverUI _questGiverUI;
         [SerializeField] private TalkQuestUI _talkQuestUI;
         [SerializeField] private WorldInfoUI _worldInfoUI;
+        [SerializeField] private UIInventory _inventoryUI;
         
         public override void InstallBindings()
         {
@@ -19,6 +21,7 @@ namespace Infastructure
             Container.Bind<QuestGiverUI>().FromInstance(_questGiverUI).AsSingle();  
             Container.Bind<TalkQuestUI>().FromInstance(_talkQuestUI).AsSingle(); 
             Container.Bind<WorldInfoUI>().FromInstance(_worldInfoUI).AsSingle();
+            Container.Bind<UIInventory>().FromInstance(_inventoryUI).AsSingle();
         }
     }
 }
