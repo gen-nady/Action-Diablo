@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ItemsSystem.Items.World;
+using UnityEngine;
 
 namespace EnemiesSystem.Enemy
 {
@@ -8,16 +9,17 @@ namespace EnemiesSystem.Enemy
         [SerializeField] private float _attackPower;
         
         #region MONO
-        private void OnTriggerEnter2D(Collider2D col)
+        private void OnTriggerEnter(Collider col)
         {
-            // if (col.TryGetComponent<Attack>(out var attack))
-            // {
-            //     _lifePoints -= attack.Damage;
-            //     if (_lifePoints <= 0)
-            //     {
-            //         gameObject.SetActive(false);
-            //     }
-            // }
+            if (col.TryGetComponent<SimpleSword>(out var attack))
+            {
+                if(attack.Info.StatsAttackInfo == null) return;
+                _lifePoints -= attack.Info.StatsAttackInfo.Damage;
+                if (_lifePoints <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
         }
         #endregion        
           

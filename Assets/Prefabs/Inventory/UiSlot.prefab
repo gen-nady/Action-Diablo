@@ -308,7 +308,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 135, y: -165}
-  m_SizeDelta: {x: 170, y: 230}
+  m_SizeDelta: {x: 150, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1296298658905219605
 CanvasRenderer:
@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiInventoryItem: {fileID: 2398585496454557701}
+  _isTrash: 0
 --- !u!1 &5737202145908076984
 GameObject:
   m_ObjectHideFlags: 0

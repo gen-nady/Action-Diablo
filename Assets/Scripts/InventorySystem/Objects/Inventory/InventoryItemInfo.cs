@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using AttackSystem.StatsAttack;
+using UnityEngine;
 
 namespace InventorySystem.Objects
 {
-    [CreateAssetMenu(fileName = "InventoryItemInfo", menuName = "Inventory", order = 0)]
+    [CreateAssetMenu(fileName = "InventoryItemInfo", menuName = "Inventory/Item", order = 0)]
     public class InventoryItemInfo : ScriptableObject
     {
         [SerializeField] private string _id;
@@ -10,7 +11,9 @@ namespace InventorySystem.Objects
         [SerializeField] private string _description;
         [SerializeField] private int _maxItemsInInventoruSlot;
         [SerializeField] private Sprite _spriteIco;
+        [SerializeField] private StatsAttackInfo _statsAttackInfo;
 
+        public StatsAttackInfo StatsAttackInfo => _statsAttackInfo;
         public string id => _id;
         public string title => _title;
         public string description => _description;

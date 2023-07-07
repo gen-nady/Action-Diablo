@@ -17,3 +17,4 @@ MonoBehaviour:
   _description: MegaSword
   _maxItemsInInventoruSlot: 4
   _spriteIco: {fileID: 21300000, guid: f002749063d458a43910794b800d8423, type: 3}
+  _statsAttackInfo: {fileID: 11400000, guid: e3a3317755366a1428e0112001d98d94, type: 2}
