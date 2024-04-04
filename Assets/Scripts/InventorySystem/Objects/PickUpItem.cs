@@ -1,6 +1,4 @@
-﻿using System;
-using InventorySystem.Objects;
-using MainPlayer;
+﻿using InventorySystem.Objects;
 using UnityEngine;
 
 namespace InventorySystem

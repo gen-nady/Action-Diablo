@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace InventorySystem.UI
@@ -10,6 +9,7 @@ namespace InventorySystem.UI
         private Canvas _invetoryCanvas;
         private RectTransform _rectTransform;
         private const int SCALE_FACTOR = 2;
+        
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();

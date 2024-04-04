@@ -6,7 +6,7 @@ using Zenject;
 
 namespace EnemiesSystem.Enemy
 {
-    public abstract class QuestEnemy : MonoBehaviour
+    public abstract class QuestEnemy : Enemy
     {
         [SerializeField] protected string _idName;
         protected PlayerQuest _playerQuest;

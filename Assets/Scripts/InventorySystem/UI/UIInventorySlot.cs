@@ -25,7 +25,7 @@ namespace InventorySystem.UI
             var otherItemUI = eventData.pointerDrag.GetComponent<UIInventoryItem>();
             var otherSlotUI = otherItemUI.GetComponentInParent<UIInventorySlot>();
             var otherSlot = otherSlotUI.slot;
-            var inventory = _uiInventory.inventory;
+            var inventory = _uiInventory._inventory;
             if (_isTrash)
             {
                 inventory.Remove(this, otherSlot);

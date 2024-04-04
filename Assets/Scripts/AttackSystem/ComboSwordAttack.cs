@@ -1,5 +1,4 @@
-﻿using System;
-using AttackSystem.AnimatorState;
+﻿using AttackSystem.AnimatorState;
 using UnityEngine;
 
 namespace AttackSystem

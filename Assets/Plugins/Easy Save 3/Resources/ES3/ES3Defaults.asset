@@ -33,7 +33,9 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Cinemachine
+    - DOTween.Modules
     - PPv2URPConverters
+    - UniRx
     - Zenject
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

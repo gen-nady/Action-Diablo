@@ -11,11 +11,11 @@ namespace InventorySystem.UI
         [SerializeField] private RectTransform _uiInventorySlotPosition;
         [SerializeField] private GridLayoutGroup _gridLayoutGroup;
         private List<UIInventorySlot> _uiSlots = new List<UIInventorySlot>();
-        public InventoryWithSlots inventory { get; private set; }
+        public InventoryWithSlots _inventory { get; private set; }
 
         public void SetInventory(InventoryWithSlots inventory)
         {
-            this.inventory = inventory;
+            _inventory = inventory;
             inventory.OnInventoryStateChangedEvent += OnInventoryStateChanged;
         }
 
@@ -33,7 +33,7 @@ namespace InventorySystem.UI
         
         private void SetupInventoryUI()
         {
-            var allSlots = inventory.GetAllSlots();
+            var allSlots = _inventory.GetAllSlots();
             for (int i = 0; i < allSlots.Count; i++)
             {
                 var slot = allSlots[i];
@@ -56,13 +56,13 @@ namespace InventorySystem.UI
 
         private void IntantiateInventory()
         {
-            if(inventory.capacity == _uiSlots.Count) return;
+            if(_inventory.capacity == _uiSlots.Count) return;
             foreach (var slot in _uiSlots)
                 Destroy(slot.gameObject);
             _uiSlots.Clear();
             
            
-            for (int i = 0; i < inventory.capacity; i++)
+            for (int i = 0; i < _inventory.capacity; i++)
             {
                 var slot = Instantiate(_uiInventorySlotPrefab, _uiInventorySlotPosition);
                 _uiSlots.Add(slot);
